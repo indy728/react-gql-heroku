@@ -34,7 +34,7 @@ const RootQuery = new GraphQLObjectType({
         query: { type: GraphQLString },
       },
       resolve(parent, args) {
-        return axios.get(`${tmbdQueryUrl('/movie/now_playing')}`)
+        return axios.get(`${tmbdQueryUrl(`/movie/${args.query}`)}`)
           .then(res => res.data.results)
           .catch(er => er);
       },
